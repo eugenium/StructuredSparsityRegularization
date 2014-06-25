@@ -33,7 +33,7 @@ def MiniBatchStochSubGradientDescent(X,Y,ObjectiveFunc,w0,alpha0=np.power(10.0,3
     w=w0
     alpha=alpha0
     wbest=w0
-    for epoch in range(epochs):
+    for epoch in range(1,epochs):
         #compute objective value at the start of each epoch
         
         e=ObjectiveFunc.f(X,Y,w);
@@ -52,7 +52,7 @@ def MiniBatchStochSubGradientDescent(X,Y,ObjectiveFunc,w0,alpha0=np.power(10.0,3
         else:
             wbest=w;
             fbest=e;
-            if((Le-e)/e<tol or e==0):
+            if( e==0 or (Le-e)/e<tol):
                 break
             
             Le=e;
@@ -73,7 +73,7 @@ def MiniBatchStochSubGradientDescent(X,Y,ObjectiveFunc,w0,alpha0=np.power(10.0,3
     
             # noisy subgradient calculation
     
-            g=ObjectiveFunc.gradf(x_cur,y_cur,w);
+            g=np.squeeze(ObjectiveFunc.gradf(x_cur,y_cur,w));
             
             if(norm(g)==0):
                 break;

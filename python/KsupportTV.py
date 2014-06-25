@@ -9,10 +9,11 @@ eugene.belilovsky@ecp.fr
 """
 import numpy as np
 from scipy.linalg import toeplitz
+from scipy import sparse
       
 class TV:
     def __init__(self,D=None):
-        self.D=D;
+        self.D=sparse.csr_matrix(D);
         if (D is not None):
             self.p=np.sum(D,0)
         else:
@@ -31,12 +32,9 @@ class TV:
         
     def gradfOptimized(self,w):
         #requires precomputing
-        D_w=-np.dot(self.D,w)
-        Log=D_w<=0
-       
-        g=self.D[Log,:].sum(0)
-        g=2*g-self.p
-        return g
+        Log=-self.D.dot(w)<=0
+        g=2*self.D[Log,:].sum(0)-self.p
+        return np.array(g)
         
     def f(self,w,D):
         return sum(np.abs(np.dot(D,w)))

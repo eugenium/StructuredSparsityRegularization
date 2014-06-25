@@ -62,7 +62,7 @@ def main():
         for k in KChoices:
             for lam2 in Lamb2:
                 KTVS=LF.KtvSVM(D,huber=0.00001,lambda1=1.0/C,lambda2=lam2,k=k)
-                (w,primal)=MiniBatchStochSubGradientDescent(Xtrain,Ytrain,KTVS,w0,alpha0=np.power(10.0,3),N=25,eta=2,tol=np.power(10.0,-6),compareEach=50,epochs=10000)
+                (w,primal)=MiniBatchStochSubGradientDescent(Xtrain,Ytrain,KTVS,w0,alpha0=np.power(10.0,3),N=25,eta=2,tol=np.power(10.0,-6),compareEach=100,epochs=10000)
                 currAccuracy=float(np.sum(np.sign(np.dot(Xval,w))==Yval))/len(Yval)
                 if(currAccuracy>BestAccuracy):
                     wbest=w
