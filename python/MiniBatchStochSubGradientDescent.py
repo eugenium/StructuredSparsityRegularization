@@ -52,7 +52,7 @@ def MiniBatchStochSubGradientDescent(X,Y,ObjectiveFunc,w0,alpha0=np.power(10.0,3
         else:
             wbest=w;
             fbest=e;
-            if((Le-e)/e<tol):
+            if((Le-e)/e<tol or e==0):
                 break
             
             Le=e;
