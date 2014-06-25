@@ -2,4 +2,4 @@ This is an implementation of a structured sparsity regularization method with to
 
 The example implementation includes a regularization of hinge loss. However a similar approach can be used with any loss function as long as the gradients can be provided.  
 
-Run test.m to get started
+Run test.m or test.py to get started
