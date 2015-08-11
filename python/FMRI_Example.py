@@ -2,8 +2,6 @@
 Decoding scissor and scramblepixel with proximal K-support and isotropic TV
 """
 # author: Eugene Belilovsky
-#         DOHMATOB Elvis Dopgima,
-#         VAROQUAUX Gael
 #
 
 from nilearn.input_data import NiftiMasker
